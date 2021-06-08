@@ -1,48 +1,36 @@
-import { Injectable, NgZone } from '@angular/core';
-import { User } from './user';
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+
+export interface Post {
+  id?: string | any;
+  title: string;
+  description: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private authApiBase: string = 'http://localhost:1337';
+  private url = 'http://localhost:1337/posts';
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private httpClient: HttpClient,
-    public authService: AuthService
-  ) {}
-
-  // Sign in with email/password
-  users() {
-    return this.httpClient
-      .get<any>(`${this.authApiBase}/users`, {
-        headers: {
-          Authorization: `Bearer ${this.authService.authToken}`,
-        },
-      })
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
+  getPosts() {
+    return this.http.get<any>(`${this.url}`);
   }
 
-  me() {
-    return this.httpClient
-      .get<any>(`${this.authApiBase}/users/me`, {
-        headers: {
-          Authorization: `Bearer ${this.authService.authToken}`,
-        },
-      })
-      .pipe(
-        map((response) => {
-          return response;
-        })
-      );
+  createPost(post: object) {
+    return this.http.post<any>(this.url, post);
+  }
+
+  ModificarPost(post: Post, id: string) {
+    return this.http.put<any>(`${this.url}/${post}`, id);
+  }
+
+  deletePost(id: string) {
+    return this.http.delete<any>(`${this.url}/${id}`);
+  }
+
+  getPostById(id: string) {
+    return this.http.get<Post>(`${this.url}/${id}`);
   }
 }

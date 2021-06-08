@@ -1,6 +1,7 @@
 <body>
   <main class="main" id="top">
     <nav
+      *ngIf="!auth.eslogueado()"
       class="navbar navbar-expand-lg navbar-light fixed-top py-3"
       data-navbar-on-scroll="data-navbar-on-scroll"
     >
