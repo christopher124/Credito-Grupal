@@ -2,9 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 export interface Clients {
-  id?: string | any;
-  title: string;
-  description: string;
+  _id?: string | any;
+  firstname: string;
+  lastname: string;
+  address: string;
+  number_int_address: string;
+  suburb: string;
+  city: string;
+  state: string;
+  zip: string;
+}
+
+export interface cod {
+  cp: string;
+  estado: string;
 }
 
 @Injectable({
@@ -12,12 +23,25 @@ export interface Clients {
 })
 export class ClientService {
   private url = 'http://localhost:1337/clients';
-  private state = 'https://api.copomex.com/query/get_estados?token=pruebas';
-
+  private endpoint_sepomex = 'https://api.copomex.com/query';
+  private method_sepomex = 'info_cp';
+  private cp = '';
+  private variable_string = '?type=simplified';
+  private token = '&token=pruebas';
+  private count = 'http://localhost:1337/clients/count';
   constructor(private http: HttpClient) {}
 
-  getstate() {
-    return this.http.get<any>(`${this.state}`);
+  getCount() {
+    return this.http.get<any>(this.count);
+  }
+  getCp(cp: string) {
+    return this.http.get<any>(
+      `${this.endpoint_sepomex}/${this.method_sepomex}/${cp}/${this.variable_string}${this.token}`
+    );
+  }
+
+  getPostById(_id: string) {
+    return this.http.get<Clients>(`${this.url}/${_id}`);
   }
 
   getClients() {
@@ -28,10 +52,11 @@ export class ClientService {
     return this.http.post<any>(this.url, cliente);
   }
 
-  ModificarClients(client: Clients, id: string) {
-    return this.http.put<any>(`${this.url}/${client}`, id);
+  updateClients(_id: string, cliente: Clients) {
+    return this.http.put<any>(`${this.url}/${cliente}`, _id);
   }
-  deleteClients(id: string) {
-    return this.http.delete<any>(`${this.url}/${id}`);
+
+  deleteClients(_id: string) {
+    return this.http.delete<any>(`${this.url}/${_id}`);
   }
 }

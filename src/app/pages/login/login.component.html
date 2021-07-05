@@ -1,45 +1,71 @@
 <body>
-  <br /><br /><br /><br /><br /><br /><br />
-  <form class="formulario" method="POST">
-    <h1>Iniciar Sesión</h1>
-    <br /><br /><br />
-    <div class="contenedor">
-      <div class="input-contenedor">
-        <i class="icon-mail"></i>
-        <input
-          type="email"
-          placeholder="Correo Electronico"
-          name="correo"
-          [(ngModel)]="usuario.identifier"
-        />
-      </div>
-
-      <div class="input-contenedor">
-        <i class="icon-key"></i>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          name="pass"
-          [(ngModel)]="usuario.password"
-        />
-      </div>
-      <input
-        type="submit"
-        value="Iniciar session"
-        class="button"
-        (click)="login(usuario.identifier, usuario.password)"
-      />
-      <br /><br />
-      <p>
-        Al registrarte, aceptas nuestras condiciones de uso y Avisos de
-        privacidad.
-      </p>
-      <br />
-      <p>
-        ¿No tienes cuenta?
-        <a class="link" [routerLink]="['/register']"> Registrate </a>
-      </p>
-      <br />
+  <img class="wave" src="../../../assets/ccs-login/img/wave.png" />
+  <div class="container">
+    <div class="img">
+      <img src="../../../assets/ccs-login/img/bg.svg" />
     </div>
-  </form>
+    <div class="login-content">
+      <form #Forma="ngForm" class="formulario" method="POST">
+        <img src="../../../assets/ccs-login/img/avatar.svg" />
+        <h2 class="title">Bienvenido</h2>
+        <div class="input-div one">
+          <div class="i">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="div">
+            <input
+              required
+              class="form-control"
+              [ngClass]="{
+                'is-valid': email.valid,
+                'is-invalid': email.invalid
+              }"
+              #email="ngModel"
+              pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+              name="email"
+              type="email"
+              placeholder="Correo electrónico"
+              name="correo"
+              [(ngModel)]="usuario.identifier"
+            />
+          </div>
+        </div>
+        <div class="input-div pass">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="div">
+            <input
+              required
+              class="form-control"
+              [ngClass]="{
+                'is-valid': password.valid,
+                'is-invalid': password.invalid
+              }"
+              #password="ngModel"
+              pattern="^[a-z0-9_-]{6,16}$"
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              name="pass"
+              [(ngModel)]="usuario.password"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="password.invalid && password.dirty"
+            ></div>
+          </div>
+        </div>
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <input
+          [disabled]="!Forma.valid"
+          (click)="login(usuario.identifier, usuario.password)"
+          type="submit"
+          class="btn"
+          value="Iniciar sesión"
+        />
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>

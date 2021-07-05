@@ -22,7 +22,11 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/dashboard">
+        <a
+          class="nav-link"
+          routerLinkActive="active-link"
+          routerLink="/dashboard"
+        >
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a
         >
@@ -43,6 +47,7 @@
           data-target="#collapseTwo"
           aria-expanded="true"
           aria-controls="collapseTwo"
+          routerLinkActive="active-link"
         >
           <i class="fas fa-user"></i>
           <span>Clientes</span>
@@ -58,28 +63,26 @@
             <a class="collapse-item" routerLink="/client-new">
               <i class="fas fa-user-plus"></i> Agregar Clientes</a
             >
-            <a class="collapse-item" href="cards.html"
+            <a class="collapse-item" routerLink="/client-list"
               ><i class="fas fa-clipboard-list"></i> Lista de clientes</a
-            >
-            <a class="collapse-item" href="cards.html">
-              <i class="fas fa-search"></i> Buscar de clientes</a
             >
           </div>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <!-- Nav Item - clientes -->
+      <li class="nav-item" style="cursor: pointer">
         <a
           class="nav-link collapsed"
-          href="#"
+          routerLinkActive="active-link"
           data-toggle="collapse"
           data-target="#collapseUtilities"
           aria-expanded="true"
           aria-controls="collapseUtilities"
+          routerLinkActive="active-link"
         >
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <i class="far fa-id-card"></i>
+          <span>Usuarios</span>
         </a>
         <div
           id="collapseUtilities"
@@ -88,25 +91,89 @@
           data-parent="#accordionSidebar"
         >
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html"
-              >Animations</a
+            <h6 class="collapse-header">Componente usuarios:</h6>
+            <a class="collapse-item" routerLink="/user-new">
+              <i class="fas fa-user-plus"></i> Agregar usuarios</a
             >
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" routerLink="/user-list"
+              ><i class="fas fa-clipboard-list"></i> Lista de usuarios</a
+            >
           </div>
         </div>
       </li>
 
+      <!-- Nav Item - grupos -->
+      <li class="nav-item" style="cursor: pointer">
+        <a
+          class="nav-link collapsed"
+          routerLinkActive="active-link"
+          data-toggle="collapse"
+          data-target="#collapseUtilitie"
+          aria-expanded="true"
+          aria-controls="collapseUtilitie"
+        >
+          <i class="fas fa-users"></i>
+          <span>Grupos</span>
+        </a>
+        <div
+          id="collapseUtilitie"
+          class="collapse"
+          aria-labelledby="headingUtilities"
+          data-parent="#accordionSidebar"
+        >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Componente Grupos:</h6>
+            <a class="collapse-item" routerLink="/group-new">
+              <i class="fas fa-user-plus"></i> Agregar Grupos</a
+            >
+            <a class="collapse-item" routerLink="/user-list"
+              ><i class="fas fa-clipboard-list"></i> Lista de Grupos</a
+            >
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - requerimientos -->
+      <li class="nav-item" style="cursor: pointer">
+        <a
+          class="nav-link collapsed"
+          routerLinkActive="active-link"
+          data-toggle="collapse"
+          data-target="#collapseUtiliti"
+          aria-expanded="true"
+          aria-controls="collapseUtiliti"
+        >
+          <i class="fas fa-list-alt"></i>
+          <span>Solicitudes</span>
+        </a>
+        <div
+          id="collapseUtiliti"
+          class="collapse"
+          aria-labelledby="headingUtilities"
+          data-parent="#accordionSidebar"
+        >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Componente Solicitudes:</h6>
+            <a class="collapse-item" routerLink="/requests-new">
+              <i class="fas fa-plus"></i> Nueva Solicitud</a
+            >
+            <a class="collapse-item" routerLink="/requests-client-new">
+              <i class="fas fa-plus"></i> Nueva Solicitud(Cliente)</a
+            >
+            <a class="collapse-item" routerLink="/requests-list"
+              ><i class="fas fa-clipboard-list"></i> Lista de Solicitudes</a
+            >
+          </div>
+        </div>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider" />
 
-      <!-- Heading -->
+      <!-- Heading
       <div class="sidebar-heading">Addons</div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+       Nav Item - Pages Collapse Menu -->
+      <!-- <li class="nav-item">
         <a
           class="nav-link collapsed"
           href="#"
@@ -137,49 +204,26 @@
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a
         >
-      </li>
+      </li> -->
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a
         >
-      </li>
+      </li>  -->
 
       <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block" />
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-      <!-- Sidebar Message -->
-      <div class="sidebar-card d-none d-lg-flex">
-        <img
-          class="sidebar-card-illustration mb-2"
-          src="img/undraw_rocket.svg"
-          alt="..."
-        />
-        <p class="text-center mb-2">
-          <strong>SB Admin Pro</strong> is packed with premium features,
-          components, and more!
-        </p>
-        <a
-          class="btn btn-success btn-sm"
-          href="https://startbootstrap.com/theme/sb-admin-pro"
-          >Upgrade to Pro!</a
-        >
-      </div>
+      <!-- <hr class="sidebar-divider d-none d-md-block" /> -->
     </ul>
     <!-- End of Sidebar -->
 
@@ -207,7 +251,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form
+          <!-- <form
             class="
               d-none d-sm-inline-block
               form-inline
@@ -232,54 +276,14 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="searchDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div
-                class="
-                  dropdown-menu dropdown-menu-right
-                  p-3
-                  shadow
-                  animated--grow-in
-                "
-                aria-labelledby="searchDropdown"
-              >
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control bg-light border-0 small"
-                      placeholder="Search for..."
-                      aria-label="Search"
-                      aria-describedby="basic-addon2"
-                    />
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
 
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <!-- <li class="nav-item dropdown no-arrow mx-1">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -290,10 +294,10 @@
                 aria-expanded="false"
               >
                 <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
+                 Counter - Alerts 
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
-              <!-- Dropdown - Alerts -->
+             Dropdown - Alerts 
               <div
                 class="
                   dropdown-list dropdown-menu dropdown-menu-right
@@ -345,10 +349,10 @@
                   >Show All Alerts</a
                 >
               </div>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
+            <!-- <li class="nav-item dropdown no-arrow mx-1">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -359,10 +363,10 @@
                 aria-expanded="false"
               >
                 <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
+                
                 <span class="badge badge-danger badge-counter">7</span>
               </a>
-              <!-- Dropdown - Messages -->
+              
               <div
                 class="
                   dropdown-list dropdown-menu dropdown-menu-right
@@ -447,9 +451,9 @@
                   >Read More Messages</a
                 >
               </div>
-            </li>
+            </li> -->
 
-            <div class="topbar-divider d-none d-sm-block"></div>
+            <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -462,9 +466,11 @@
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Douglas McGee</span
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  {{ username ? username : "N/A" }}</span
                 >
+                <div class="topbar-divider d-none d-sm-block"></div>
+
                 <img
                   class="img-profile rounded-circle"
                   src="../../../../assets/css-admin/img/undraw_profile.svg"
@@ -481,16 +487,9 @@
               >
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Usuarios
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+
                 <div class="dropdown-divider"></div>
                 <a
                   class="dropdown-item"
@@ -516,16 +515,16 @@
             class="d-sm-flex align-items-center justify-content-between mb-4"
           >
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a
+            <!-- <a
               href="#"
               class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
               ><i class="fas fa-download fa-sm text-white-50"></i> Generate
               Report</a
-            >
+            > -->
           </div>
 
           <!-- Content Row -->
-          <div class="row">
+          <div routerLink="/user-list" style="cursor: pointer" class="row">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -543,7 +542,7 @@
                         Usuarios registrados
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        5
+                        {{ CountUser ? CountUser : "Cargando..." }}
                       </div>
                     </div>
                     <div class="col-auto">
@@ -555,7 +554,11 @@
             </div>
 
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div
+              routerLink="/client-list"
+              style="cursor: pointer"
+              class="col-xl-3 col-md-6 mb-4"
+            >
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -571,7 +574,7 @@
                         Clientes registrados
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        12
+                        {{ CountClient ? CountClient : "Cargando..." }}
                       </div>
                     </div>
                     <div class="col-auto">
@@ -618,7 +621,11 @@
             </div>
 
             <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div
+              routerLink="/group-list"
+              style="cursor: pointer"
+              class="col-xl-3 col-md-6 mb-4"
+            >
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -634,7 +641,7 @@
                         Grupos
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        18
+                        {{ CountGroup ? CountGroup : "Cargando..." }}
                       </div>
                     </div>
                     <div class="col-auto">
@@ -649,16 +656,6 @@
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2021</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->
   </div>
@@ -699,28 +696,14 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal">
             Cancelar
           </button>
-          <a class="btn btn-primary" (click)="auth.cerrarSesion()"
+          <a
+            class="btn btn-primary"
+            data-dismiss="modal"
+            (click)="auth.cerrarSesion()"
             >Cerrar sesión
           </a>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 </body>

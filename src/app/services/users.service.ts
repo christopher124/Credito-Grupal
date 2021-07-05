@@ -1,36 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Post {
+export interface Users {
   id?: string | any;
-  title: string;
-  description: string;
+  username: string;
+  email: string;
+  password: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private url = 'http://localhost:1337/posts';
-  constructor(private http: HttpClient) {}
+  private url = 'http://localhost:1337/users';
+  private count = 'http://localhost:1337/users/count';
 
-  getPosts() {
+  constructor(private http: HttpClient) {}
+  getCount() {
+    return this.http.get<any>(this.count);
+  }
+  getUsers() {
     return this.http.get<any>(`${this.url}`);
   }
 
-  createPost(post: object) {
+  createUsers(post: object) {
     return this.http.post<any>(this.url, post);
   }
 
-  ModificarPost(post: Post, id: string) {
-    return this.http.put<any>(`${this.url}/${post}`, id);
+  updateClients(_id: string, usuario: Users) {
+    return this.http.put<any>(`${this.url}/${usuario}`, _id);
   }
-
-  deletePost(id: string) {
+  deleteUsers(id: string) {
     return this.http.delete<any>(`${this.url}/${id}`);
   }
 
-  getPostById(id: string) {
-    return this.http.get<Post>(`${this.url}/${id}`);
+  getUsersById(id: string) {
+    return this.http.get<Users>(`${this.url}/${id}`);
   }
 }

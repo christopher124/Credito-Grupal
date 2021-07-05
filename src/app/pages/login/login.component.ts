@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { UsersService, Post } from '../../services/users.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: [
+    './login.component.css',
+    '../../../assets/ccs-login/css/style.css',
+  ],
 })
 export class LoginComponent implements OnInit {
   usuario = {
@@ -20,17 +23,37 @@ export class LoginComponent implements OnInit {
     //metodo subscribe para trabajar la respuesta que viene de express
     this.auth.login(identifier, password).subscribe(
       (res) => {
-        console.log(res);
         //invocar la palabra recervada localStorage
         localStorage.setItem('token', res.jwt);
         localStorage.setItem('rol', res.user.role.type);
-        alert('bien');
+        localStorage.setItem('Username', res.user.username);
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 6000,
+          timerProgressBar: true,
+          icon: 'success',
+          title: 'Bienvenido' + ' ' + res.user.username,
+        });
         //ruteo con variable para que mande a otro sitio
         this.router.navigate(['/dashboard']);
       },
       (err) => {
-        console.log(err);
-        alert('error');
+        if (err) {
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 10000,
+            timerProgressBar: true,
+            icon: 'error',
+            title:
+              'Correo electronico o contraseña incorrectos' +
+              ' ' +
+              'puede que la cuenta esta debilitada comunicase con su administrador',
+          });
+        }
       }
     );
   }
