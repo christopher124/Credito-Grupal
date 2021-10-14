@@ -26,12 +26,13 @@ export class ClientComponent implements OnInit {
     city: '',
     state: '',
     zip: '',
+    tel: '',
   };
-  codigos: any;
-  codigo: cod = {
+
+  codigos: any = {
     cp: '',
-    estado: '',
   };
+  clientes: any = {};
 
   constructor(
     public auth: AuthService,
@@ -39,6 +40,13 @@ export class ClientComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private title: Title
   ) {}
+
+  buscar(termino: string) {
+    this.client.getCp(termino).subscribe((data) => {
+      console.log(data.response);
+      this.codigos = data.response;
+    });
+  }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
@@ -53,33 +61,39 @@ export class ClientComponent implements OnInit {
     this.title.setTitle('Crear cliente - Credito grupal');
   }
 
-  getCp() {
-    this.client.getCp(this.codigo.cp).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => console.log(err)
-    );
-  }
-
   saveCliente() {
-    this.client.createClients(this.cliente).subscribe((res) => {
-      this.limpiarCampos();
+    if (!this.cliente) {
+      console.log(this.cliente);
+      console.log(this.ConsulEmpleado);
+
       Swal.fire({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
-        icon: 'success',
-        title: 'Cliente registrado',
+        icon: 'error',
+        title: 'El cliente ya existe',
       });
-    });
+    } else {
+      this.client.createClients(this.cliente).subscribe((res) => {
+        this.limpiarCampos();
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          icon: 'success',
+          title: 'Cliente registrado',
+        });
+      });
+    }
   }
   ConsulEmpleado() {
     this.client.getClients().subscribe(
       (res) => {
-        console.log(res);
+        this.clientes = res;
       },
       (err) => console.log(err)
     );
@@ -93,6 +107,7 @@ export class ClientComponent implements OnInit {
       (this.cliente.city = ''),
       (this.cliente.state = ''),
       (this.cliente.zip = '');
+    this.cliente.tel = '';
   }
   updateCliente() {
     this.client
@@ -105,6 +120,7 @@ export class ClientComponent implements OnInit {
         city: this.cliente.city,
         state: this.cliente.state,
         zip: this.cliente.zip,
+        tel: this.cliente.tel,
       })
       .subscribe(
         (res) => console.log(res),

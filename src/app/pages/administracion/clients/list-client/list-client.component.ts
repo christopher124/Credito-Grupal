@@ -28,6 +28,7 @@ export class ListClientComponent implements OnInit {
     zip: '',
     _id: '',
   };
+  loading?: boolean;
 
   constructor(
     public auth: AuthService,
@@ -59,9 +60,11 @@ export class ListClientComponent implements OnInit {
     });
   }
   getCliente() {
+    this.loading = true;
     this.client.getClients().subscribe(
       (res) => {
         this.clientes = res;
+        this.loading = false;
       },
       (err) => console.log(err)
     );

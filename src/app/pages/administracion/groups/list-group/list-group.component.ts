@@ -22,6 +22,7 @@ export class ListGroupComponent implements OnInit {
     groupname: '',
     groupleader: '',
   };
+  loading?: boolean;
 
   constructor(
     public auth: AuthService,
@@ -54,9 +55,11 @@ export class ListGroupComponent implements OnInit {
     });
   }
   getGroups() {
+    this.loading = true;
     this.group.getGrops().subscribe(
       (res) => {
         this.grupos = res;
+        this.loading = false;
       },
       (err) => console.log(err)
     );

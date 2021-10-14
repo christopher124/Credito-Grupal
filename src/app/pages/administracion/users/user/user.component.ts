@@ -57,6 +57,8 @@ export class UserComponent implements OnInit {
         });
       },
       (err) => {
+        console.log(err);
+
         Swal.fire({
           toast: true,
           position: 'top-end',
@@ -84,7 +86,7 @@ export class UserComponent implements OnInit {
   }
   updateUsuario() {
     this.user
-      .updateClients(this.usuario.id, {
+      .updateClients(this.usuario._id, {
         email: this.usuario.email,
         password: this.usuario.password,
         username: this.usuario.username,

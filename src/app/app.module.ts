@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { NavbarComponent } from './search/navbar/navbar.component';
+import { NavbarComponent } from './pages/shared/navbar/navbar.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { ComoPagarComponent } from './pages/como-pagar/como-pagar.component';
@@ -41,6 +41,7 @@ import { FilterGroupPipe } from './pipes/filter-group.pipe';
 import { RequestGroupsComponent } from './pages/administracion/request/request-groups/request-groups.component';
 import { RequestUsersComponent } from './pages/administracion/request/request-users/request-users.component';
 import { ListRequestComponent } from './pages/administracion/request/list-request/list-request.component';
+import { LoadingComponent } from './pages/shared/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { ListRequestComponent } from './pages/administracion/request/list-reques
     RequestGroupsComponent,
     RequestUsersComponent,
     ListRequestComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

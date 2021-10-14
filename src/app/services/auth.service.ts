@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +18,11 @@ export class AuthService {
   }
   eslogueado() {
     //metodo para indicar si existe la variable token en localStorage, solo retornara el contenido de la informacio
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
   cerrarSesion() {
     //eliminacion de variable localStorage esto elimina cualquier variable que este en la parte de aplicacion
-    localStorage.clear();
+    sessionStorage.clear();
     //redirigirlo a una ruta que sea conveninte
     this.router.navigate(['']);
   }

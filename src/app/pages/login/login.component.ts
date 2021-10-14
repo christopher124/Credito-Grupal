@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(identifier, password).subscribe(
       (res) => {
         //invocar la palabra recervada localStorage
-        localStorage.setItem('token', res.jwt);
+        sessionStorage.setItem('token', res.jwt);
         localStorage.setItem('rol', res.user.role.type);
         localStorage.setItem('Username', res.user.username);
         Swal.fire({

@@ -48,7 +48,18 @@ export class GroupComponent implements OnInit {
   saveGroup() {
     this.group.createGrops(this.grupo).subscribe(
       (res) => {
-        console.log(this.grupo);
+        this.limpiarCampos();
+        console.log(res);
+
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          icon: 'success',
+          title: 'Grupo registrado',
+        });
       },
       (err) => console.log(err)
     );

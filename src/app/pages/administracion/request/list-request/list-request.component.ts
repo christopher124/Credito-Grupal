@@ -24,6 +24,7 @@ export class ListRequestComponent implements OnInit {
     requests_user: '',
     createdAt: '',
   };
+  loading?: boolean;
 
   constructor(
     public auth: AuthService,
@@ -54,11 +55,13 @@ export class ListRequestComponent implements OnInit {
     });
   }
   getRequest() {
+    this.loading = true;
     this.request.getRequest().subscribe(
       (res) => {
         console.log(res);
 
         this.solicitudes = res;
+        this.loading = false;
       },
       (err) => console.log(err)
     );

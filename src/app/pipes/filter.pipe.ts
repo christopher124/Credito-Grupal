@@ -31,6 +31,8 @@ export class FilterPipe implements PipeTransform {
         resultPosts.push(cliente);
       } else if (cliente.zip.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultPosts.push(cliente);
+      } else if (cliente.tel.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+        resultPosts.push(cliente);
       }
     }
     return resultPosts;
