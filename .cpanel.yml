@@ -1,4 +1,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home3/creditog/creditogrupal.mx/
-    - /bin/rsync -av dist/ $DEPLOYPATH
+    - /bin/rsync -av dist/credito-grupal/ $DEPLOYPATH
