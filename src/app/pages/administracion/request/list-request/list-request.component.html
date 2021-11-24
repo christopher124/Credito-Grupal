@@ -327,16 +327,13 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let solicitud of solicitudes">
-                        <td>{{ solicitud.id | slice: 0:7 }}</td>
+                        <td>{{ solicitud.id }}</td>
                         <td>{{ solicitud.amount_requested }}</td>
                         <td>{{ solicitud.group.groupname }}</td>
                         <td>
-                          {{ solicitud.requests_users[0].client | slice: 0:7 }}
-                          <hr />
-                          {{ solicitud.requests_users[1].client | slice: 0:7
-                          }}<br />
+                          {{ solicitud.group.requests_user }}
                         </td>
-                        <td>{{ solicitud.createdAt | date }}</td>
+                        <td>{{ solicitud.created_at | date }}</td>
                         <td>{{ solicitud.status }}</td>
                         <td>
                           <i

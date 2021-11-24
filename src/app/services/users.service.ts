@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 export interface Users {
-  _id?: string | any;
+  id?: string | any;
   username: string;
   email: string;
   password: string;
@@ -25,8 +25,8 @@ export class UsersService {
     return this.http.post<any>(`${environment.url}/users`, post);
   }
 
-  updateClients(_id: object, usuario: Users) {
-    return this.http.put<any>(`${environment.url}/users/${usuario}`, _id);
+  updateClients(id: string, usuario: Users) {
+    return this.http.put<any>(`${environment.url}/users/${id}`, usuario);
   }
   deleteUsers(id: string) {
     return this.http.delete<any>(`${environment.url}/users/${id}`);

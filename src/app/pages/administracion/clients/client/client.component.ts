@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { ClientService, Clients, cod } from 'src/app/services/client.service';
-import { ActivatedRoute } from '@angular/router';
+import { ClientService, Clients } from 'src/app/services/client.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Title } from '@angular/platform-browser';
 
@@ -38,7 +38,8 @@ export class ClientComponent implements OnInit {
     public auth: AuthService,
     private client: ClientService,
     private activatedRoute: ActivatedRoute,
-    private title: Title
+    private title: Title,
+    private router: Router
   ) {}
 
   buscar(termino: string) {
@@ -109,9 +110,10 @@ export class ClientComponent implements OnInit {
       (this.cliente.zip = '');
     this.cliente.tel = '';
   }
+
   updateCliente() {
     this.client
-      .updateClients(this.cliente._id, {
+      .updateClients(this.cliente.id, {
         firstname: this.cliente.firstname,
         lastname: this.cliente.lastname,
         address: this.cliente.address,
@@ -122,9 +124,6 @@ export class ClientComponent implements OnInit {
         zip: this.cliente.zip,
         tel: this.cliente.tel,
       })
-      .subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
-      );
+      .subscribe((res) => this.router.navigate(['/client-list']));
   }
 }

@@ -57,8 +57,10 @@ export class ListGroupComponent implements OnInit {
   getGroups() {
     this.loading = true;
     this.group.getGrops().subscribe(
-      (res) => {
-        this.grupos = res;
+      (data) => {
+        this.grupos = data;
+        console.log(data);
+
         this.loading = false;
       },
       (err) => console.log(err)

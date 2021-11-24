@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClientService } from 'src/app/services/client.service';
 import { GroupService, Group } from 'src/app/services/group.service';
@@ -17,7 +17,6 @@ export class GroupComponent implements OnInit {
   editing = false;
   username = localStorage.getItem('Username');
 
-  grupos: any;
   grupo: Group = {
     groupname: '',
     groupleader: '',
@@ -30,7 +29,8 @@ export class GroupComponent implements OnInit {
     private group: GroupService,
     private activatedRoute: ActivatedRoute,
     private title: Title,
-    private client: ClientService
+    private client: ClientService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +68,7 @@ export class GroupComponent implements OnInit {
     this.client.getClients().subscribe(
       (res) => {
         this.clientes = res;
+        console.log(res);
       },
       (err) => console.log(err)
     );
@@ -78,12 +79,12 @@ export class GroupComponent implements OnInit {
   }
   updateGroup() {
     this.group
-      .updateGrops(this.grupo._id, {
+      .updateGrops(this.grupo.id, {
         groupname: this.grupo.groupname,
         groupleader: this.grupo.groupleader,
       })
       .subscribe(
-        (res) => console.log(res),
+        (res) => this.router.navigate(['/group-list']),
         (err) => console.log(err)
       );
   }

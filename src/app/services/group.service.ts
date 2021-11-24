@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 export interface Group {
-  _id?: string | any;
+  id?: string | any;
   groupname: string;
   groupleader: string;
 }
@@ -17,8 +18,8 @@ export class GroupService {
   getCount() {
     return this.http.get<any>(`${environment.url}/groups/count`);
   }
-  getGropsById(_id: string) {
-    return this.http.get<Group>(`${environment.url}/groups/${_id}`);
+  getGropsById(id: string) {
+    return this.http.get<Group>(`${environment.url}/groups/${id}`);
   }
 
   getGrops() {
@@ -29,11 +30,11 @@ export class GroupService {
     return this.http.post<any>(`${environment.url}/groups`, cliente);
   }
 
-  updateGrops(_id: string, grupos: Group) {
-    return this.http.put<any>(`${environment.url}/groups/${grupos}`, _id);
+  updateGrops(id: string, grupos: Group) {
+    return this.http.put<Group>(`${environment.url}/groups/${id}`, grupos);
   }
 
-  deleteGrops(_id: string) {
-    return this.http.delete<any>(`${environment.url}/groups/${_id}`);
+  deleteGrops(id: string) {
+    return this.http.delete<any>(`${environment.url}/groups/${id}`);
   }
 }

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 export interface Clients {
-  _id?: string | any;
+  id?: string | any;
   firstname: string;
   lastname: string;
   address: string;
@@ -31,32 +31,31 @@ export class ClientService {
   private token = '&token=pruebas';
   constructor(private http: HttpClient) {}
 
-  getCount() {
-    return this.http.get<any>(`${environment.url}/clients/count`);
-  }
   getCp(cp: string) {
     return this.http.get<any>(
       `${this.endpoint_sepomex}/${this.method_sepomex}/${cp}/${this.variable_string}${this.token}`
     );
   }
-
-  getPostById(_id: string) {
-    return this.http.get<Clients>(`${environment.url}/clients/${_id}`);
+  getCount() {
+    return this.http.get<any>(`${environment.url}/clients/count`);
   }
-
   getClients() {
     return this.http.get<any>(`${environment.url}/clients`);
+  }
+
+  getPostById(id: string) {
+    return this.http.get<any>(`${environment.url}/clients/${id}`);
   }
 
   createClients(cliente: object) {
     return this.http.post<any>(`${environment.url}/clients`, cliente);
   }
 
-  updateClients(_id: string, cliente: Clients) {
-    return this.http.put<any>(`${environment.url}/clients/${cliente}`, _id);
+  updateClients(id: string, cliente: Clients) {
+    return this.http.put<Clients>(`${environment.url}/clients/${id}`, cliente);
   }
 
-  deleteClients(_id: string) {
-    return this.http.delete<any>(`${environment.url}/clients/${_id}`);
+  deleteClients(id: string) {
+    return this.http.delete<any>(`${environment.url}/clients/${id}`);
   }
 }

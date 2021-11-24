@@ -26,7 +26,7 @@ export class ListClientComponent implements OnInit {
     city: '',
     state: '',
     zip: '',
-    _id: '',
+    id: '',
   };
   loading?: boolean;
 
@@ -68,5 +68,9 @@ export class ListClientComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+  }
+
+  editCliente(id: string) {
+    console.log(id);
   }
 }

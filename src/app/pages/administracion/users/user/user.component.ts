@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsersService, Users } from 'src/app/services/users.service';
 import Swal from 'sweetalert2';
@@ -27,7 +27,8 @@ export class UserComponent implements OnInit {
     public auth: AuthService,
     private user: UsersService,
     private activatedRoute: ActivatedRoute,
-    private title: Title
+    private title: Title,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -86,13 +87,25 @@ export class UserComponent implements OnInit {
   }
   updateUsuario() {
     this.user
-      .updateClients(this.usuario._id, {
+      .updateClients(this.usuario.id, {
         email: this.usuario.email,
         password: this.usuario.password,
         username: this.usuario.username,
       })
       .subscribe(
-        (res) => console.log(res),
+        (res) => {
+          this.router.navigate(['/user-list']);
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: 'success',
+            title: 'Usuario Modificado',
+          });
+        },
+
         (err) => console.log(err)
       );
   }

@@ -332,7 +332,7 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let cliente of clientes | filter: filterPost">
-                        <td>{{ cliente.id | slice: 0:7 }}</td>
+                        <td>{{ cliente.id }}</td>
                         <td>{{ cliente.firstname }}</td>
                         <td>{{ cliente.lastname }}</td>
                         <td>{{ cliente.tel ? cliente.tel : "N/A" }}</td>
